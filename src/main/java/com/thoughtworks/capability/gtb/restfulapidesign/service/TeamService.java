@@ -53,4 +53,8 @@ public class TeamService {
         }
         return null;
     }
+
+    public Team getTeamById(Integer id) {
+        return teamRepository.findById(id);
+    }
 }

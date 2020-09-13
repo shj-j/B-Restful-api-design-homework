@@ -30,4 +30,9 @@ public class TeamController {
     public Team updateGroupName(@PathVariable int id, @RequestParam String teamName) {
         return teamService.updateTeamName(id, teamName);
     }
+
+    @GetMapping("/teams/{id}")
+    public Team getTeamById(@PathVariable  Integer id){
+        return teamService.getTeamById(id);
+    }
 }
