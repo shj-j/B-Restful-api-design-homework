@@ -1,10 +1,12 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.repository;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.domain.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class StudentRepository {
@@ -19,8 +21,14 @@ public class StudentRepository {
 //        studentList.add(Student.builder().id(7).name("江雨舟").build());
 //    }
 
-    public List<Student> findAll(){
+    public List<Student> findAll() {
         return new ArrayList<>(studentList);
+    }
+
+    public List<Student> findAllByGender(Gender gender) {
+        //return studentList.stream().filter(student -> student.getGender() == gender).collect(Collectors.toList());
+        System.out.println(studentList.stream().filter(student -> student.getGender() == gender).collect(Collectors.toList()));
+        return new ArrayList<>(studentList.stream().filter(student -> student.getGender() == gender).collect(Collectors.toList()));
     }
 
     public Student findById(Integer studentId) {

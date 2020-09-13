@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.domain.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,8 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<Student> getAllStudents(){
-        return studentService.getAllStudents();
+    public List<Student> getAllStudents(@RequestParam(required = false) Gender gender){
+        return studentService.getAllStudents(gender);
     }
 
     @PostMapping("/students")

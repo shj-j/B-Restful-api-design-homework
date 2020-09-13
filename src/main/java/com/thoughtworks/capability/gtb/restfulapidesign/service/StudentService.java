@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.domain.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Team;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
@@ -16,7 +17,12 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getAllStudents() { return studentRepository.findAll(); }
+    public List<Student> getAllStudents(Gender gender) {
+        if(gender != null){
+            return studentRepository.findAllByGender(gender);
+        }
+        return studentRepository.findAll();
+    }
 
     public void saveStudent(Student student) { studentRepository.save(student); }
 
