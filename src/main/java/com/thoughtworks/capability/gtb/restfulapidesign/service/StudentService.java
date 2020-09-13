@@ -18,10 +18,13 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents(Gender gender) {
-        if(gender != null){
-            return studentRepository.findAllByGender(gender);
+        if(gender == null){
+            System.out.println(gender);
+            return studentRepository.findAll();
+
         }
-        return studentRepository.findAll();
+        System.out.println("not in if");
+        return studentRepository.findAllByGender(gender);
     }
 
     public void saveStudent(Student student) { studentRepository.save(student); }
@@ -29,4 +32,8 @@ public class StudentService {
     public void deleteStudent(Integer studentId) { studentRepository.deleteById(studentId); }
 
     public Student getStudent(Integer studentId) { return studentRepository.findById(studentId); }
+
+    public void updateStudent(Integer studentId, Student student) {
+        studentRepository.updateById(studentId, student);
+    }
 }

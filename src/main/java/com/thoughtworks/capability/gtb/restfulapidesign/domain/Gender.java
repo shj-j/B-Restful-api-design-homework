@@ -8,7 +8,7 @@ public enum Gender {
 
     private String code;
 
-    @JsonCreator
+//    @JsonCreator
     Gender(String code) {
         this.code = code;
     }

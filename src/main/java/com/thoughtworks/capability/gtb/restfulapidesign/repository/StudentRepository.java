@@ -44,4 +44,8 @@ public class StudentRepository {
         studentList.remove(student);
     }
 
+    public void updateById(Integer studentId, Student student) {
+        deleteById(studentId);
+        studentList.add(student);
+    }
 }
