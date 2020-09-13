@@ -46,4 +46,11 @@ public class TeamService {
         teamRepository.save(teamGrouping);
     }
 
+    public Team updateTeamName(int id, String teamName) {
+        Team team = teamRepository.findById(id);
+        if(team != null) {
+            team.setTeamName(teamName);
+        }
+        return null;
+    }
 }

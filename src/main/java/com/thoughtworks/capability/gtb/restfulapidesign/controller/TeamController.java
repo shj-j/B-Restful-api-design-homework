@@ -25,4 +25,9 @@ public class TeamController {
         teamService.grouping();
         return teamService.getTeams();
     }
+
+    @PatchMapping("/teams/{id}")
+    public Team updateGroupName(@PathVariable int id, @RequestParam String teamName) {
+        return teamService.updateTeamName(id, teamName);
+    }
 }
