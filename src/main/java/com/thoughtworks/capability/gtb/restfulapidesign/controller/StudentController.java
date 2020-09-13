@@ -36,7 +36,7 @@ public class StudentController {
         return studentService.getStudent(id);
     }
 
-    @PatchMapping("/students/{id}")
+    @PutMapping("/students/{id}")
     public void updateStudent(@PathVariable Integer id, @RequestBody Student student) { studentService.updateStudent(id, student);}
 
 }
