@@ -19,11 +19,11 @@ public class StudentService {
 
     public List<Student> getAllStudents(Gender gender) {
         if(gender == null){
-            System.out.println(gender);
+            System.out.println("gender is null");
             return studentRepository.findAll();
 
         }
-        System.out.println("not in if");
+        System.out.println(gender);
         return studentRepository.findAllByGender(gender);
     }
 

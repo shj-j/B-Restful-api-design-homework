@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/students")
 public class StudentController {
     final StudentService studentService;
 
@@ -16,27 +16,27 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/students")
+    @GetMapping("")
     public List<Student> getAllStudents(@RequestParam(required = false) Gender gender){
         return studentService.getAllStudents(gender);
     }
 
-    @PostMapping("/students")
+    @PostMapping("")
     public void addStudent(@RequestBody Student student){
         studentService.saveStudent(student);
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Integer id) {
         studentService.deleteStudent(id);
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public Student getStudent(@PathVariable Integer id) {
         return studentService.getStudent(id);
     }
 
-    @PutMapping("/students/{id}")
+    @PatchMapping("/{id}")
     public void updateStudent(@PathVariable Integer id, @RequestBody Student student) { studentService.updateStudent(id, student);}
 
 }

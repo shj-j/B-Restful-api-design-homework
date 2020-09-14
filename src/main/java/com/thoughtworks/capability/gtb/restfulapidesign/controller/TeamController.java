@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/teams")
 public class TeamController {
     final TeamService teamService;
 
@@ -20,18 +20,23 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-    @GetMapping("/teams")
+    @GetMapping("")
     public List<Team> getTeams(){
+        return teamService.getTeams();
+    }
+
+    @GetMapping("/grouping")
+    public List<Team> groupTeams(){
         teamService.grouping();
         return teamService.getTeams();
     }
 
-    @PatchMapping("/teams/{id}")
+    @PatchMapping("/{id}")
     public Team updateGroupName(@PathVariable int id, @RequestParam String teamName) {
         return teamService.updateTeamName(id, teamName);
     }
 
-    @GetMapping("/teams/{id}")
+    @GetMapping("/{id}")
     public Team getTeamById(@PathVariable  Integer id){
         return teamService.getTeamById(id);
     }
